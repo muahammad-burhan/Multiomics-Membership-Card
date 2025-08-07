@@ -33,7 +33,7 @@ st.markdown("""
     
     .title {
         text-align: center;
-        color: #ffffff!important;
+        color: #ffffff !important;
         font-size: 2.5rem;
         margin-bottom: 2rem;
         font-weight: bold;
@@ -41,7 +41,7 @@ st.markdown("""
     
     .subtitle {
         text-align: center;
-        color: #7f8c8d !important;
+        color: #b1b5b5 !important;
         font-size: 1.2rem;
         margin-bottom: 3rem;
     }
@@ -57,7 +57,7 @@ st.markdown("""
     .stButton > button {
         width: 100%;
         background-color: #0151ee !important;
-        color: white;
+        color: white !important;
         border-radius: 10px;
         border: none;
         padding: 0.75rem;
@@ -76,7 +76,58 @@ st.markdown("""
         background-color: #f8f9fa  !important;
         text-align: center;
     }
+            
+            /* Input field labels and text */
+.stTextInput label, .stFileUploader label {
+    color: white !important;
+}
+
+.stTextInput > div > div > label {
+    color: white !important;
+}
+
+.stFileUploader > div > div > label {
+    color: white !important;
+}
+
+/* Help text under inputs */
+.stTextInput .help, .stFileUploader .help {
+    color: #bdc3c7 !important;
+}
+
+/* Placeholder text */
+.stTextInput input::placeholder {
+    color: #95a5a6 !important;
+}
+
+/* Expander header and content */
+.streamlit-expanderHeader {
+    color: white !important;
+    background-color: #34495e !important;
+}
+
+.streamlit-expanderContent {
+    color: white !important;
+    background-color: #2c3e50 !important;
+}
+
+.streamlit-expanderContent p, 
+.streamlit-expanderContent li, 
+.streamlit-expanderContent strong {
+    color: white !important;
+}
+
+/* Column content */
+.element-container {
+    color: white !important;
+}
+
+/* General text elements */
+.markdown-text-container {
+    color: white !important;
+}
     
+
     @media (max-width: 768px) {
         .title {
             font-size: 2rem;
@@ -260,7 +311,7 @@ def main():
     # Footer
     st.markdown("---")
     st.markdown(
-        '<p style="text-align: center; color: #7f8c8d; font-size: 0.9rem;"> wemultiomics</p>',
+        '<p style="text-align: center; color: #b1b5b5; font-size: 0.9rem;"> wemultiomics</p>',
         unsafe_allow_html=True
     )
 
