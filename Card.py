@@ -75,9 +75,10 @@ st.markdown("""
         border-radius: 10px;
         background-color: #f8f9fa  !important;
         text-align: center;
+        text-color: black
     }
             
-            /* Input field labels and text */
+
 .stTextInput label, .stFileUploader label {
     color: white !important;
 }
@@ -102,8 +103,8 @@ st.markdown("""
 
 /* Expander header and content */
 .streamlit-expanderHeader {
-    color: white !important;
-    background-color: #34495e !important;
+    color: black !important;
+    background-color: white !important;
 }
 
 .streamlit-expanderContent {
@@ -126,9 +127,14 @@ st.markdown("""
 .markdown-text-container {
     color: white !important;
 }
-    
 
-    @media (max-width: 768px) {
+            
+hr {
+    border-color: #b1b5b5 !important;
+}
+
+            
+ @media (max-width: 768px) {
         .title {
             font-size: 2rem;
         }
