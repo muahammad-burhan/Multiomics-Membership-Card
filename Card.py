@@ -18,15 +18,15 @@ st.markdown("""
         padding-top: 2rem;
     }
     .stApp {
-    background-color: #1a1a1a !important;
-}
+        background-color: #1a1a1a !important;
+    }
 
-.main .block-container {
-    background-color: #2d2d2d !important;
-    padding: 2rem;
-    border-radius: 15px;
-    margin-top: 2rem;
-}
+    .main .block-container {
+        background-color: #2d2d2d !important;
+        padding: 2rem;
+        border-radius: 15px;
+        margin-top: 2rem;
+    }
     .stApp > header {
         background-color: transparent !important;
     }
@@ -70,90 +70,89 @@ st.markdown("""
     }
     
     .download-section {
-    margin-top: 2rem;
-    padding: 0;
-    border-radius: 10px;
-    background-color: #f8f9fa !important;
-    text-align: center;
-}
+        margin-top: 2rem;
+        padding: 0;
+        border-radius: 10px;
+        background-color: #f8f9fa !important;
+        text-align: center;
+    }
 
-/* Download button styling */
-.download-section .stDownloadButton > button {
-    background-color: white !important;
-    color: black !important;
-    border: 2px solid #0151ee !important;
-    border-radius: 10px !important;
-    padding: 0.75rem !important;
-    font-weight: bold !important;
-    font-size: 1.1rem !important;
-}
+    /* Download button styling */
+    .download-section .stDownloadButton > button {
+        background-color: white !important;
+        color: black !important;
+        border: 2px solid #0151ee !important;
+        border-radius: 10px !important;
+        padding: 0.75rem !important;
+        font-weight: bold !important;
+        font-size: 1.1rem !important;
+    }
 
-.download-section .stDownloadButton > button:hover {
-    background-color: #f8f9fa !important;
-    color: black !important;
-    border-color: #ffcf01 !important;
-            
+    .download-section .stDownloadButton > button:hover {
+        background-color: #f8f9fa !important;
+        color: black !important;
+        border-color: #ffcf01 !important;
+    }
 
-.stTextInput label, .stFileUploader label {
-    color: white !important;
-}
+    /* Input field labels - WHITE TEXT */
+    .stTextInput label, .stFileUploader label {
+        color: white !important;
+    }
 
-.stTextInput > div > div > label {
-    color: white !important;
-}
+    .stTextInput > div > div > label {
+        color: white !important;
+    }
 
-.stFileUploader > div > div > label {
-    color: white !important;
-}
+    .stFileUploader > div > div > label {
+        color: white !important;
+    }
 
-/* Help text under inputs */
-.stTextInput .help, .stFileUploader .help {
-    color: #bdc3c7 !important;
-}
+    /* Help text under inputs */
+    .stTextInput .help, .stFileUploader .help {
+        color: #bdc3c7 !important;
+    }
 
-/* Placeholder text */
-.stTextInput input::placeholder {
-    color: #95a5a6 !important;
-}
+    /* Placeholder text */
+    .stTextInput input::placeholder {
+        color: #95a5a6 !important;
+    }
 
-/* Expander header and content */
-.streamlit-expanderHeader {
-    color: black !important;
-    background-color: white !important;
-}
+    /* Expander header and content */
+    .streamlit-expanderHeader {
+        color: black !important;
+        background-color: white !important;
+    }
 
-.streamlit-expanderContent {
-    color: white !important;
-    background-color: #2c3e50 !important;
-}
+    .streamlit-expanderContent {
+        color: white !important;
+        background-color: #2c3e50 !important;
+    }
 
-.streamlit-expanderContent p, 
-.streamlit-expanderContent li, 
-.streamlit-expanderContent strong {
-    color: white !important;
-}
+    .streamlit-expanderContent p, 
+    .streamlit-expanderContent li, 
+    .streamlit-expanderContent strong {
+        color: white !important;
+    }
 
-/* Column content */
-.element-container {
-    color: white !important;
-}
+    /* Column content */
+    .element-container {
+        color: white !important;
+    }
 
-/* General text elements */
-.markdown-text-container {
-    color: white !important;
-}
+    /* General text elements */
+    .markdown-text-container {
+        color: white !important;
+    }
 
-            
-hr {
-    border-color: white !important;
-    background-color: white !important;
-    height: 8px !important;
-    border-width: 6px !important;
-    margin: 1rem 0 !important;
-}
+    /* Horizontal line - THICK WHITE LINE */
+    hr {
+        border: none !important;
+        height: 2px !important;
+        background-color: #b1b5b5 !important;
+        margin: 1rem 0 !important;
+    }
 
-            
- @media (max-width: 768px) {
+    @media (max-width: 768px) {
         .title {
             font-size: 2rem;
         }
@@ -262,7 +261,7 @@ def main():
             name = st.text_input(
                 "Enter Your Full Name",
                 placeholder="Junaid Iqbal",
-                help="This will appear on your membership card"
+                
             )
             
             st.markdown("<br>", unsafe_allow_html=True)
@@ -271,7 +270,7 @@ def main():
             uploaded_file = st.file_uploader(
                 "Upload Your Photo",
                 type=['png', 'jpg', 'jpeg'],
-                help="Upload a clear photo for your membership card"
+                
             )
             
             st.markdown("<br>", unsafe_allow_html=True)
