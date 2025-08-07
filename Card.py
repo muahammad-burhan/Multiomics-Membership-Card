@@ -88,11 +88,7 @@ st.markdown("""
         font-size: 1.1rem !important;
     }
 
-    .download-section .stDownloadButton > button:hover {
-        background-color: #f8f9fa !important;
-        color: black !important;
-        border-color: #ffcf01 !important;
-    }
+   
 
     /* Input field labels - WHITE TEXT */
     .stTextInput label, .stFileUploader label {
