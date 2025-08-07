@@ -84,15 +84,14 @@ st.markdown("""
         background-color: #0151ee !important;
         background: #0151ee !important;
         color: #ffffff !important;
-        border: 2px solid #ffffff !important;
-        border-radius: 12px !important;
+        border: 1px solid #ffffff !important;
+        border-radius: 10px !important;
         padding: 1rem 1.5rem !important;
         font-weight: bold !important;
         font-size: 1.2rem !important;
         width: 100% !important;
         box-shadow: 0 4px 12px rgba(1, 81, 238, 0.3) !important;
         letter-spacing: 0.5px !important;
-        min-height: 50px !important;
     }
 
     /* Force override any Streamlit default styles */
@@ -130,7 +129,7 @@ st.markdown("""
 
     /* Show Browse files button on mobile */
     .stFileUploader button {
-        background-color: #0151ee !important;
+        background-color: #252525 !important;
         color: white !important;
         border: none !important;
         border-radius: 8px !important;
@@ -225,7 +224,7 @@ st.markdown("""
         }
 
         .stFileUploader button {
-            background-color: #0151ee !important;
+            background-color: #252525 !important;
             color: white !important;
             border: none !important;
             border-radius: 8px !important;
