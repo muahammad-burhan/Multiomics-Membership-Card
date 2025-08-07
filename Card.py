@@ -11,39 +11,58 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS for center alignment and mobile responsiveness
+# Custom CSS for modern design
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    * {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
     .main > div {
         padding-top: 2rem;
     }
+    
     .stApp {
-        background-color: #1a1a1a !important;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%) !important;
     }
 
     .main .block-container {
-        background-color: #2d2d2d !important;
-        padding: 2rem;
-        border-radius: 15px;
+        background: linear-gradient(145deg, #2a2a2a, #343434) !important;
+        padding: 3rem;
+        border-radius: 24px;
         margin-top: 2rem;
+        box-shadow: 
+            0 25px 50px -12px rgba(0, 0, 0, 0.8),
+            0 0 0 1px rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
+    
     .stApp > header {
         background-color: transparent !important;
     }
     
     .title {
         text-align: center;
-        color: #ffffff !important;
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
-        font-weight: bold;
+        background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
     }
     
     .subtitle {
         text-align: center;
-        color: #b1b5b5 !important;
-        font-size: 1.2rem;
+        color: #a1a1aa !important;
+        font-size: 1.1rem;
         margin-bottom: 3rem;
+        font-weight: 400;
+        opacity: 0.8;
     }
     
     .center-content {
@@ -56,180 +75,247 @@ st.markdown("""
     
     .stButton > button {
         width: 100%;
-        background-color: #0151ee !important;
+        background: linear-gradient(135deg, #0151ee 0%, #0a4fd8 100%) !important;
         color: white !important;
-        border-radius: 10px;
+        border-radius: 16px;
         border: none;
-        padding: 0.75rem;
+        padding: 1rem;
         font-size: 1.1rem;
-        font-weight: bold;
+        font-weight: 600;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 
+            0 10px 25px -5px rgba(1, 81, 238, 0.4),
+            0 0 0 1px rgba(1, 81, 238, 0.1);
     }
     
     .stButton > button:hover {
-        background-color: #ffcf01 !important;
+        background: linear-gradient(135deg, #ffcf01 0%, #f59e0b 100%) !important;
+        transform: translateY(-2px);
+        box-shadow: 
+            0 20px 40px -5px rgba(255, 207, 1, 0.4),
+            0 0 0 1px rgba(255, 207, 1, 0.2);
     }
     
     .download-section {
         margin-top: 2rem;
         padding: 1rem;
-        border-radius: 10px;
-        background-color: transparent !important;
+        border-radius: 16px;
+        background: transparent !important;
         text-align: center;
     }
 
-    /* Simple Download Button - Easy to read on dark background */
+    /* Modern Download Button */
     .stDownloadButton > button,
     .download-section .stDownloadButton > button,
     div[data-testid="stDownloadButton"] > button {
-        background-color: #0151ee !important;
-        background: #0151ee !important;
+        background: linear-gradient(135deg, #0151ee 0%, #0a4fd8 100%) !important;
         color: #ffffff !important;
-        border: 1px solid #ffffff !important;
-        border-radius: 10px !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: 16px !important;
         padding: 1rem 1.5rem !important;
-        font-weight: bold !important;
-        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+        font-size: 1.1rem !important;
         width: 100% !important;
-        box-shadow: 0 4px 12px rgba(1, 81, 238, 0.3) !important;
-        letter-spacing: 0.5px !important;
+        box-shadow: 
+            0 10px 25px -5px rgba(1, 81, 238, 0.4),
+            0 0 0 1px rgba(1, 81, 238, 0.1) !important;
+        letter-spacing: 0.01em !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .stDownloadButton > button:hover {
+        transform: translateY(-1px);
+        box-shadow: 
+            0 15px 35px -5px rgba(1, 81, 238, 0.5),
+            0 0 0 1px rgba(1, 81, 238, 0.2) !important;
     }
 
     /* Force override any Streamlit default styles */
     .stDownloadButton button:not(:hover):not(:active):not(:focus) {
-        background-color: #0151ee !important;
-        background: #0151ee !important;
+        background: linear-gradient(135deg, #0151ee 0%, #0a4fd8 100%) !important;
     }
 
-    /* Input field labels - WHITE TEXT */
+    /* Modern Input Labels */
     .stTextInput label, .stFileUploader label {
-        color: white !important;
+        color: #f4f4f5 !important;
+        font-weight: 500 !important;
+        font-size: 0.95rem !important;
+        margin-bottom: 0.5rem !important;
     }
 
     .stTextInput > div > div > label {
-        color: white !important;
+        color: #f4f4f5 !important;
+        font-weight: 500 !important;
     }
 
     .stFileUploader > div > div > label {
-        color: white !important;
+        color: #f4f4f5 !important;
+        font-weight: 500 !important;
     }
 
-    /* File Upload - Mobile Friendly */
+    /* Modern Text Input */
+    .stTextInput input {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 12px !important;
+        color: white !important;
+        padding: 0.75rem 1rem !important;
+        font-size: 1rem !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .stTextInput input:focus {
+        border: 1px solid #0151ee !important;
+        box-shadow: 0 0 0 3px rgba(1, 81, 238, 0.1) !important;
+        outline: none !important;
+    }
+
+    /* Modern File Upload */
     .stFileUploader > div > div > div {
-        background-color: #3a3a3a !important;
-        border: 2px dashed #0151ee !important;
-        border-radius: 10px !important;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.08)) !important;
+        border: 2px dashed rgba(1, 81, 238, 0.6) !important;
+        border-radius: 16px !important;
         padding: 2rem 1rem !important;
         text-align: center !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .stFileUploader > div > div > div:hover {
+        border-color: #0151ee !important;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1)) !important;
     }
 
     .stFileUploader > div > div > div > div {
-        color: white !important;
+        color: #e4e4e7 !important;
         font-size: 1rem !important;
+        font-weight: 400 !important;
     }
 
-    /* Show Browse files button on mobile */
+    /* Modern Browse Button */
     .stFileUploader button {
-        background-color: #252525 !important;
-        color: white !important;
-        border: none !important;
-        border-radius: 8px !important;
-        padding: 0.5rem 1rem !important;
-        font-weight: bold !important;
-        margin-top: 0.5rem !important;
+        background: linear-gradient(135deg, #374151 0%, #4b5563 100%) !important;
+        color: #f9fafb !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 10px !important;
+        padding: 0.6rem 1.2rem !important;
+        font-weight: 500 !important;
+        margin-top: 0.75rem !important;
         display: inline-block !important;
         visibility: visible !important;
+        transition: all 0.2s ease !important;
+        font-size: 0.9rem !important;
+    }
+
+    .stFileUploader button:hover {
+        background: linear-gradient(135deg, #4b5563 0%, #6b7280 100%) !important;
+        transform: translateY(-1px);
     }
 
     .stFileUploader [data-testid="stFileUploaderDropzone"] {
         min-height: 120px !important;
     }
 
-    /* Help text under inputs */
+    /* Modern Help Text */
     .stTextInput .help, .stFileUploader .help {
-        color: #bdc3c7 !important;
+        color: #9ca3af !important;
+        font-size: 0.85rem !important;
     }
 
-    /* Placeholder text */
+    /* Modern Placeholder */
     .stTextInput input::placeholder {
-        color: #95a5a6 !important;
+        color: #6b7280 !important;
+        opacity: 0.8 !important;
     }
 
-    /* Expander header and content */
+    /* Success/Error Messages */
+    .stSuccess {
+        background: linear-gradient(90deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+        border: 1px solid rgba(34, 197, 94, 0.2);
+        border-radius: 12px;
+    }
+
+    .stError {
+        background: linear-gradient(90deg, rgba(239, 68, 68, 0.1) 0%, rgba(239, 68, 68, 0.05) 100%);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        border-radius: 12px;
+    }
+
+    /* Modern Spinner */
+    .stSpinner {
+        color: #0151ee !important;
+    }
+
+    /* Expander styling */
     .streamlit-expanderHeader {
-        color: black !important;
-        background-color: white !important;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+        color: #1e293b !important;
+        border-radius: 12px !important;
+        font-weight: 500 !important;
     }
 
     .streamlit-expanderContent {
-        color: white !important;
-        background-color: #2c3e50 !important;
+        background: linear-gradient(145deg, #2d3748, #374151) !important;
+        color: #f7fafc !important;
+        border-radius: 0 0 12px 12px !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
     }
 
-    .streamlit-expanderContent p, 
-    .streamlit-expanderContent li, 
-    .streamlit-expanderContent strong {
-        color: white !important;
-    }
-
-    /* Column content */
-    .element-container {
-        color: white !important;
-    }
-
-    /* General text elements */
-    .markdown-text-container {
-        color: white !important;
-    }
-
-    /* Horizontal line - THICK WHITE LINE */
+    /* Modern HR */
     hr {
         border: none !important;
-        height: 2px !important;
-        background-color: #b1b5b5 !important;
-        margin: 1rem 0 !important;
+        height: 1px !important;
+        background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%) !important;
+        margin: 2rem 0 !important;
     }
 
+    /* Mobile optimizations */
     @media (max-width: 768px) {
         .title {
-            font-size: 2rem;
+            font-size: 2.2rem;
         }
         .subtitle {
             font-size: 1rem;
+        }
+        
+        .main .block-container {
+            padding: 2rem 1.5rem;
+            border-radius: 20px;
         }
         
         /* Mobile download button */
         .stDownloadButton > button,
         .download-section .stDownloadButton > button,
         div[data-testid="stDownloadButton"] > button {
-            background-color: #0151ee !important;
-            background: #0151ee !important;
+            background: linear-gradient(135deg, #0151ee 0%, #0a4fd8 100%) !important;
             color: #ffffff !important;
-            border: 2px solid #ffffff !important;
-            border-radius: 12px !important;
-            padding: 1.2rem 1rem !important;
-            font-size: 1.1rem !important;
-            font-weight: bold !important;
-            letter-spacing: 0.5px !important;
-            box-shadow: 0 4px 12px rgba(1, 81, 238, 0.4) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 14px !important;
+            padding: 1rem !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.01em !important;
+            box-shadow: 
+                0 8px 20px -5px rgba(1, 81, 238, 0.4),
+                0 0 0 1px rgba(1, 81, 238, 0.1) !important;
             min-height: 50px !important;
         }
 
         /* Mobile file upload improvements */
         .stFileUploader > div > div > div {
-            background-color: #3a3a3a !important;
-            border: 2px dashed #0151ee !important;
-            border-radius: 10px !important;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.08)) !important;
+            border: 2px dashed rgba(1, 81, 238, 0.6) !important;
+            border-radius: 14px !important;
             padding: 1.5rem 1rem !important;
             min-height: 100px !important;
         }
 
         .stFileUploader button {
-            background-color: #252525 !important;
-            color: white !important;
-            border: none !important;
+            background: linear-gradient(135deg, #374151 0%, #4b5563 100%) !important;
+            color: #f9fafb !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
             border-radius: 8px !important;
             padding: 0.7rem 1.2rem !important;
-            font-weight: bold !important;
+            font-weight: 500 !important;
             font-size: 0.9rem !important;
             margin-top: 0.8rem !important;
             width: auto !important;
@@ -242,9 +328,8 @@ st.markdown("""
             min-height: 100px !important;
         }
 
-        /* Mobile file upload text */
         .stFileUploader > div > div > div > div {
-            color: #ffffff !important;
+            color: #e4e4e7 !important;
             font-size: 0.9rem !important;
             line-height: 1.4 !important;
         }
