@@ -77,7 +77,7 @@ st.markdown("""
         text-align: center;
     }
 
-    /* Download button styling - FIXED FOR MOBILE */
+    /* Download button styling - PERMANENT BLUE LIKE GENERATE BUTTON */
     .download-section .stDownloadButton > button {
         background-color: #0151ee !important;
         color: white !important;
@@ -87,28 +87,8 @@ st.markdown("""
         font-weight: bold !important;
         font-size: 1.1rem !important;
         width: 100% !important;
-        -webkit-appearance: none !important;
-        -moz-appearance: none !important;
-        appearance: none !important;
-    }
-
-    /* Mobile touch states for download button */
-    .download-section .stDownloadButton > button:hover,
-    .download-section .stDownloadButton > button:focus,
-    .download-section .stDownloadButton > button:active,
-    .download-section .stDownloadButton > button:visited,
-    .download-section .stDownloadButton > button:target {
-        background-color: #0151ee !important;
-        color: white !important;
-        border: none !important;
-        outline: none !important;
-        box-shadow: none !important;
-    }
-
-    /* Webkit specific mobile fixes */
-    .download-section .stDownloadButton > button::-webkit-any-link {
-        background-color: #0151ee !important;
-        color: white !important;
+        -webkit-tap-highlight-color: transparent !important;
+        touch-action: manipulation !important;
     }
 
     /* Input field labels - WHITE TEXT */
@@ -182,8 +162,6 @@ st.markdown("""
             background-color: #0151ee !important;
             color: white !important;
             border: none !important;
-            -webkit-tap-highlight-color: transparent !important;
-            touch-action: manipulation !important;
         }
     }
 </style>
