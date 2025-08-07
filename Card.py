@@ -114,6 +114,37 @@ st.markdown("""
         color: white !important;
     }
 
+    /* File Upload - Mobile Friendly */
+    .stFileUploader > div > div > div {
+        background-color: #3a3a3a !important;
+        border: 2px dashed #0151ee !important;
+        border-radius: 10px !important;
+        padding: 2rem 1rem !important;
+        text-align: center !important;
+    }
+
+    .stFileUploader > div > div > div > div {
+        color: white !important;
+        font-size: 1rem !important;
+    }
+
+    /* Show Browse files button on mobile */
+    .stFileUploader button {
+        background-color: #0151ee !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 0.5rem 1rem !important;
+        font-weight: bold !important;
+        margin-top: 0.5rem !important;
+        display: inline-block !important;
+        visibility: visible !important;
+    }
+
+    .stFileUploader [data-testid="stFileUploaderDropzone"] {
+        min-height: 120px !important;
+    }
+
     /* Help text under inputs */
     .stTextInput .help, .stFileUploader .help {
         color: #bdc3c7 !important;
@@ -167,7 +198,7 @@ st.markdown("""
             font-size: 1rem;
         }
         
-        /* Mobile download button - larger and more readable */
+        /* Mobile download button */
         .stDownloadButton > button,
         .download-section .stDownloadButton > button,
         div[data-testid="stDownloadButton"] > button {
@@ -182,6 +213,41 @@ st.markdown("""
             letter-spacing: 0.5px !important;
             box-shadow: 0 4px 12px rgba(1, 81, 238, 0.4) !important;
             min-height: 50px !important;
+        }
+
+        /* Mobile file upload improvements */
+        .stFileUploader > div > div > div {
+            background-color: #3a3a3a !important;
+            border: 2px dashed #0151ee !important;
+            border-radius: 10px !important;
+            padding: 1.5rem 1rem !important;
+            min-height: 100px !important;
+        }
+
+        .stFileUploader button {
+            background-color: #0151ee !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 8px !important;
+            padding: 0.7rem 1.2rem !important;
+            font-weight: bold !important;
+            font-size: 0.9rem !important;
+            margin-top: 0.8rem !important;
+            width: auto !important;
+            display: block !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        .stFileUploader [data-testid="stFileUploaderDropzone"] {
+            min-height: 100px !important;
+        }
+
+        /* Mobile file upload text */
+        .stFileUploader > div > div > div > div {
+            color: #ffffff !important;
+            font-size: 0.9rem !important;
+            line-height: 1.4 !important;
         }
     }
 </style>
