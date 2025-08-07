@@ -77,18 +77,39 @@ st.markdown("""
         text-align: center;
     }
 
-    /* Download button styling */
+    /* Download button styling - FIXED FOR MOBILE */
     .download-section .stDownloadButton > button {
-        background-color: white !important;
-        color: black !important;
-        border: 2px solid #0151ee !important;
+        background-color: #0151ee !important;
+        color: white !important;
+        border: none !important;
         border-radius: 10px !important;
         padding: 0.75rem !important;
         font-weight: bold !important;
         font-size: 1.1rem !important;
+        width: 100% !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+        appearance: none !important;
     }
 
-   
+    /* Mobile touch states for download button */
+    .download-section .stDownloadButton > button:hover,
+    .download-section .stDownloadButton > button:focus,
+    .download-section .stDownloadButton > button:active,
+    .download-section .stDownloadButton > button:visited,
+    .download-section .stDownloadButton > button:target {
+        background-color: #0151ee !important;
+        color: white !important;
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Webkit specific mobile fixes */
+    .download-section .stDownloadButton > button::-webkit-any-link {
+        background-color: #0151ee !important;
+        color: white !important;
+    }
 
     /* Input field labels - WHITE TEXT */
     .stTextInput label, .stFileUploader label {
@@ -154,6 +175,15 @@ st.markdown("""
         }
         .subtitle {
             font-size: 1rem;
+        }
+        
+        /* Additional mobile-specific download button fixes */
+        .download-section .stDownloadButton > button {
+            background-color: #0151ee !important;
+            color: white !important;
+            border: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+            touch-action: manipulation !important;
         }
     }
 </style>
