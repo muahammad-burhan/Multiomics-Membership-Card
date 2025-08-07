@@ -70,13 +70,28 @@ st.markdown("""
     }
     
     .download-section {
-        margin-top: 2rem;
-        padding: 1rem;
-        border-radius: 10px;
-        background-color: #f8f9fa  !important;
-        text-align: center;
-        text-color: black
-    }
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #f8f9fa !important;
+    text-align: center;
+}
+
+/* Download button styling */
+.download-section .stDownloadButton > button {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid #0151ee !important;
+    border-radius: 10px !important;
+    padding: 0.75rem !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+}
+
+.download-section .stDownloadButton > button:hover {
+    background-color: #f8f9fa !important;
+    color: black !important;
+    border-color: #ffcf01 !important;
             
 
 .stTextInput label, .stFileUploader label {
@@ -298,20 +313,6 @@ def main():
                         st.error("❌ Please upload your photo")
         
         st.markdown('</div>', unsafe_allow_html=True)
-    
-    # Instructions
-    with st.expander("📋 How to Use"):
-        st.markdown("""
-        1. **Enter your full name** in the text field
-        2. **Upload your photo** - make sure it's clear and well-lit
-        3. Click **Generate Membership Card**
-        4. **Download** your personalized card
-        
-        **Tips:**
-        - Use a high-quality photo for best results
-        - The photo will be automatically resized to fit the card
-        - Your name will be positioned on the card template
-        """)
     
 
     # Footer
