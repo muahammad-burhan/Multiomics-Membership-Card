@@ -18,22 +18,22 @@ st.markdown("""
         padding-top: 2rem;
     }
     .stApp {
-    background-color: #1a1a1a;
+    background-color: #1a1a1a !important;
 }
 
 .main .block-container {
-    background-color: #2d2d2d;
+    background-color: #2d2d2d !important;
     padding: 2rem;
     border-radius: 15px;
     margin-top: 2rem;
 }
     .stApp > header {
-        background-color: transparent;
+        background-color: transparent !important;
     }
     
     .title {
         text-align: center;
-        color: #2c3e50;
+        color: #ffffff!important;
         font-size: 2.5rem;
         margin-bottom: 2rem;
         font-weight: bold;
@@ -41,7 +41,7 @@ st.markdown("""
     
     .subtitle {
         text-align: center;
-        color: #7f8c8d;
+        color: #7f8c8d !important;
         font-size: 1.2rem;
         margin-bottom: 3rem;
     }
@@ -56,7 +56,7 @@ st.markdown("""
     
     .stButton > button {
         width: 100%;
-        background-color: #0151ee;
+        background-color: #0151ee !important;
         color: white;
         border-radius: 10px;
         border: none;
@@ -66,14 +66,14 @@ st.markdown("""
     }
     
     .stButton > button:hover {
-        background-color: #ffcf01;
+        background-color: #ffcf01 !important;
     }
     
     .download-section {
         margin-top: 2rem;
         padding: 1rem;
         border-radius: 10px;
-        background-color: #f8f9fa;
+        background-color: #f8f9fa  !important;
         text-align: center;
     }
     
