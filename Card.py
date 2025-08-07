@@ -1,0 +1,259 @@
+import streamlit as st
+from PIL import Image, ImageDraw, ImageFont
+import io
+import base64
+
+# Page configuration
+st.set_page_config(
+    page_title="Membership Card Generator",
+    page_icon="Icon.png",
+    layout="centered",
+    initial_sidebar_state="collapsed"
+)
+
+# Custom CSS for center alignment and mobile responsiveness
+st.markdown("""
+<style>
+    .main > div {
+        padding-top: 2rem;
+    }
+    
+    .stApp > header {
+        background-color: transparent;
+    }
+    
+    .title {
+        text-align: center;
+        color: #2c3e50;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        font-weight: bold;
+    }
+    
+    .subtitle {
+        text-align: center;
+        color: #7f8c8d;
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .center-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .stButton > button {
+        width: 100%;
+        background-color: #0151ee;
+        color: white;
+        border-radius: 10px;
+        border: none;
+        padding: 0.75rem;
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+    
+    .stButton > button:hover {
+        background-color: #ffcf01;
+    }
+    
+    .download-section {
+        margin-top: 2rem;
+        padding: 1rem;
+        border-radius: 10px;
+        background-color: #f8f9fa;
+        text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+        .title {
+            font-size: 2rem;
+        }
+        .subtitle {
+            font-size: 1rem;
+        }
+    }
+</style>
+""", unsafe_allow_html=True)
+
+def create_membership_card(name, user_image):
+    """
+    Create membership card by overlaying user image and name on your template
+    """
+    try:
+        # Load your card template (place your card image in the same folder)
+        # Replace 'your_card_template.png' with your actual card file name
+        template_path = "Template.jpg"  # Change this to your card image file name
+        
+        try:
+            card = Image.open(template_path)
+            card_width, card_height = card.size
+        except FileNotFoundError:
+            st.error(f"Template not found: {template_path}")
+            st.error("Please make sure your card template is in the same folder as this script")
+            return None
+        
+        # ====== ADJUST THESE COORDINATES FOR YOUR CARD ======
+        # Photo position - change these values to match your card template
+        photo_x = 674     # X position where photo should be placed
+        photo_y = 354     # Y position where photo should be placed  
+        photo_width = 850 # Width of the photo area
+        photo_height = 1118 # Height of the photo area
+        
+        # Name position - change these values to match your card template
+        name_y = 1760      # Y position where name should be placed (only Y needed, X will be auto-centered)
+        name_font_size = 250  # Font size for the name
+        name_color = "#ffffff"  # Name text color (you can change this)
+        # =====================================================
+        
+        # Resize and position user image
+        if user_image:
+            # Make photo square and crop if needed
+            user_img = user_image.copy()
+            
+            # Resize user image to fit photo area
+            user_img = user_img.resize((photo_width, photo_height), Image.Resampling.LANCZOS)
+            card.paste(user_img, (photo_x, photo_y))
+        
+        # Add name text (center-aligned horizontally)
+        draw = ImageDraw.Draw(card)
+        
+        # Try to load custom font (Zuume or similar)
+        try:
+            # First try to load Zuume font (place zuume.ttf in same folder)
+            name_font = ImageFont.truetype("Zuume SemiBold.ttf", name_font_size)
+        except:
+            try:
+                # Try other common stylish fonts
+                name_font = ImageFont.truetype("arial.ttf", name_font_size)
+            except:
+                try:
+                    name_font = ImageFont.truetype("Arial.ttf", name_font_size)
+                except:
+                    name_font = ImageFont.load_default()
+        
+        # Calculate text width to center it horizontally
+        text_bbox = draw.textbbox((0, 0), name, font=name_font)
+        text_width = text_bbox[2] - text_bbox[0]
+        
+        # Calculate centered X position
+        name_x = (card_width - text_width) // 2
+        
+        # Draw the centered text
+        draw.text((name_x, name_y), name, fill=name_color, font=name_font)
+        
+        return card
+        
+    except Exception as e:
+        st.error(f"Error creating card: {str(e)}")
+        return None
+
+def get_download_link(img, filename):
+    """Generate download link for the image"""
+    buffered = io.BytesIO()
+    img.save(buffered, format="PNG")
+    img_str = base64.b64encode(buffered.getvalue()).decode()
+    href = f'<a href="data:image/png;base64,{img_str}" download="{filename}" class="download-btn">📥 Download Membership Card</a>'
+    return href
+
+# Main app
+def main():
+    # Title and subtitle
+    st.markdown('<h1 class="title">Multiomics Membership Card</h1>', unsafe_allow_html=True)
+    st.markdown('<p class="subtitle">Create your personalized membership card</p>', unsafe_allow_html=True)
+    
+    # Center content container
+    with st.container():
+        st.markdown('<div class="center-content">', unsafe_allow_html=True)
+        
+        # Input fields
+        col1, col2, col3 = st.columns([1, 2, 1])
+        
+        with col2:
+            # Name input
+            name = st.text_input(
+                "Enter Your Full Name",
+                placeholder="Junaid Iqbal",
+                help="This will appear on your membership card"
+            )
+            
+            st.markdown("<br>", unsafe_allow_html=True)
+            
+            # Image upload
+            uploaded_file = st.file_uploader(
+                "Upload Your Photo",
+                type=['png', 'jpg', 'jpeg'],
+                help="Upload a clear photo for your membership card"
+            )
+            
+            st.markdown("<br>", unsafe_allow_html=True)
+            
+            # Generate button
+            if st.button("🎯 Generate Membership Card"):
+                if name and uploaded_file:
+                    with st.spinner("Creating your membership card..."):
+                        # Load user image
+                        user_image = Image.open(uploaded_file)
+                        
+                        # Create the card using your template
+                        card = create_membership_card(name, user_image)
+                        
+                        if card:
+                            st.success("✅ Membership card generated successfully!")
+                            
+                            # Display the card
+                            st.markdown("<br>", unsafe_allow_html=True)
+                            st.image(card, caption="Your Membership Card", use_container_width=True)
+                            
+                            # Download section
+                            st.markdown('<div class="download-section">', unsafe_allow_html=True)
+                            
+                            # Convert to bytes for download
+                            buffered = io.BytesIO()
+                            card.save(buffered, format="PNG")
+                            
+                            st.download_button(
+                                label="📥 Download Membership Card",
+                                data=buffered.getvalue(),
+                                file_name=f"membership_card_{name.replace(' ', '_')}.png",
+                                mime="image/png",
+                                use_container_width=True
+                            )
+                            
+                            st.markdown('</div>', unsafe_allow_html=True)
+                            
+                else:
+                    if not name:
+                        st.error("❌ Please enter your name")
+                    if not uploaded_file:
+                        st.error("❌ Please upload your photo")
+        
+        st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Instructions
+    with st.expander("📋 How to Use"):
+        st.markdown("""
+        1. **Enter your full name** in the text field
+        2. **Upload your photo** - make sure it's clear and well-lit
+        3. Click **Generate Membership Card**
+        4. **Download** your personalized card
+        
+        **Tips:**
+        - Use a high-quality photo for best results
+        - The photo will be automatically resized to fit the card
+        - Your name will be positioned on the card template
+        """)
+    
+
+    # Footer
+    st.markdown("---")
+    st.markdown(
+        '<p style="text-align: center; color: #7f8c8d; font-size: 0.9rem;"> wemultiomics</p>',
+        unsafe_allow_html=True
+    )
+
+if __name__ == "__main__":
+    main()
