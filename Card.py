@@ -71,7 +71,7 @@ st.markdown("""
     
     .download-section {
     margin-top: 2rem;
-    padding: 1rem;
+    padding: 0;
     border-radius: 10px;
     background-color: #f8f9fa !important;
     text-align: center;
@@ -145,7 +145,11 @@ st.markdown("""
 
             
 hr {
-    border-color: #b1b5b5 !important;
+    border-color: white !important;
+    background-color: white !important;
+    height: 8px !important;
+    border-width: 6px !important;
+    margin: 1rem 0 !important;
 }
 
             
