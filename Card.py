@@ -71,24 +71,34 @@ st.markdown("""
     
     .download-section {
         margin-top: 2rem;
-        padding: 0;
+        padding: 1rem;
         border-radius: 10px;
-        background-color: #f8f9fa !important;
+        background-color: transparent !important;
         text-align: center;
     }
 
-    /* Download button styling - PERMANENT BLUE LIKE GENERATE BUTTON */
-    .download-section .stDownloadButton > button {
+    /* Simple Download Button - Easy to read on dark background */
+    .stDownloadButton > button,
+    .download-section .stDownloadButton > button,
+    div[data-testid="stDownloadButton"] > button {
         background-color: #0151ee !important;
-        color: white !important;
-        border: none !important;
-        border-radius: 10px !important;
-        padding: 0.75rem !important;
+        background: #0151ee !important;
+        color: #ffffff !important;
+        border: 2px solid #ffffff !important;
+        border-radius: 12px !important;
+        padding: 1rem 1.5rem !important;
         font-weight: bold !important;
-        font-size: 1.1rem !important;
+        font-size: 1.2rem !important;
         width: 100% !important;
-        -webkit-tap-highlight-color: transparent !important;
-        touch-action: manipulation !important;
+        box-shadow: 0 4px 12px rgba(1, 81, 238, 0.3) !important;
+        letter-spacing: 0.5px !important;
+        min-height: 50px !important;
+    }
+
+    /* Force override any Streamlit default styles */
+    .stDownloadButton button:not(:hover):not(:active):not(:focus) {
+        background-color: #0151ee !important;
+        background: #0151ee !important;
     }
 
     /* Input field labels - WHITE TEXT */
@@ -157,11 +167,21 @@ st.markdown("""
             font-size: 1rem;
         }
         
-        /* Additional mobile-specific download button fixes */
-        .download-section .stDownloadButton > button {
+        /* Mobile download button - larger and more readable */
+        .stDownloadButton > button,
+        .download-section .stDownloadButton > button,
+        div[data-testid="stDownloadButton"] > button {
             background-color: #0151ee !important;
-            color: white !important;
-            border: none !important;
+            background: #0151ee !important;
+            color: #ffffff !important;
+            border: 2px solid #ffffff !important;
+            border-radius: 12px !important;
+            padding: 1.2rem 1rem !important;
+            font-size: 1.1rem !important;
+            font-weight: bold !important;
+            letter-spacing: 0.5px !important;
+            box-shadow: 0 4px 12px rgba(1, 81, 238, 0.4) !important;
+            min-height: 50px !important;
         }
     }
 </style>
