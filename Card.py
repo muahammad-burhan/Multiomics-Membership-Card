@@ -17,7 +17,16 @@ st.markdown("""
     .main > div {
         padding-top: 2rem;
     }
-    
+    .stApp {
+    background-color: #1a1a1a;
+}
+
+.main .block-container {
+    background-color: #2d2d2d;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-top: 2rem;
+}
     .stApp > header {
         background-color: transparent;
     }
