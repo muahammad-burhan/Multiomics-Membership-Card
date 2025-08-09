@@ -252,6 +252,43 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+def crop_image_to_fit(image, target_width, target_height):
+    """
+    Crop image to fit the target dimensions while maintaining aspect ratio.
+    This will center-crop the image to exactly match the target size.
+    """
+    # Get original dimensions
+    original_width, original_height = image.size
+    
+    # Calculate the aspect ratios
+    target_ratio = target_width / target_height
+    original_ratio = original_width / original_height
+    
+    if original_ratio > target_ratio:
+        # Image is wider than target, crop sides
+        new_height = original_height
+        new_width = int(original_height * target_ratio)
+        left = (original_width - new_width) // 2
+        top = 0
+        right = left + new_width
+        bottom = new_height
+    else:
+        # Image is taller than target, crop top/bottom
+        new_width = original_width
+        new_height = int(original_width / target_ratio)
+        left = 0
+        top = (original_height - new_height) // 2
+        right = new_width
+        bottom = top + new_height
+    
+    # Crop the image
+    cropped_image = image.crop((left, top, right, bottom))
+    
+    # Resize to exact target dimensions
+    final_image = cropped_image.resize((target_width, target_height), Image.Resampling.LANCZOS)
+    
+    return final_image
+
 def create_membership_card(name, user_image):
     """
     Create membership card by overlaying user image and name on your template
@@ -282,14 +319,13 @@ def create_membership_card(name, user_image):
         name_color = "#ffffff"  # Name text color (you can change this)
         # =====================================================
         
-        # Resize and position user image
+        # Process and crop user image to fit exact dimensions
         if user_image:
-            # Make photo square and crop if needed
-            user_img = user_image.copy()
+            # Crop the user image to fit the exact photo area dimensions
+            cropped_user_img = crop_image_to_fit(user_image, photo_width, photo_height)
             
-            # Resize user image to fit photo area
-            user_img = user_img.resize((photo_width, photo_height), Image.Resampling.LANCZOS)
-            card.paste(user_img, (photo_x, photo_y))
+            # Paste the cropped image at the specified position
+            card.paste(cropped_user_img, (photo_x, photo_y))
         
         # Add name text (center-aligned horizontally)
         draw = ImageDraw.Draw(card)
@@ -359,7 +395,7 @@ def main():
             uploaded_file = st.file_uploader(
                 "Upload Your Photo",
                 type=['png', 'jpg', 'jpeg'],
-                
+                help="Your photo will be automatically cropped to fit the card template"
             )
             
             st.markdown("<br>", unsafe_allow_html=True)
